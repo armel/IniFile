@@ -1,6 +1,6 @@
 # IniFile
 
-IniFile is an Arduino library for reading ini files. The format is
+IniFile is an Arduino library for reading ini files on SD or SPIFFS. The format is
 similar to that seen in Microsoft `.ini` files but the implementation
 is completely independent. IniFile is designed to use minimal memory
 requirements, and the only buffer used is one supplied by the user,
