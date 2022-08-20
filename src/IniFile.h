@@ -3,8 +3,13 @@
 
 #include <stdint.h>
 
-#include <SD.h>
-#include <LittleFS.h>
+#if defined(PREFER_SDFAT_LIBRARY)
+#include "SdFat.h"
+extern SdFat SD;
+#else
+#include "SD.h"
+#include "SPIFFS.h"
+#endif
 #include "IPAddress.h"
 
 #define INIFILE_VERSION "1.3.0"
@@ -154,8 +159,8 @@ bool IniFile::open(void)
 		_file.close();
 	if (strcmp(_media, "SD") == 0)
 		_file = SD.open(_filename, _mode);
-	else if (strcmp(_media, "LittleFS") == 0)
-		_file = LittleFS.open(_filename, _mode);
+	else if (strcmp(_media, "SPIFFS") == 0)
+		_file = SPIFFS.open(_filename, _mode);
 
 	if (isOpen()) {
 		_error = errorNoError;
