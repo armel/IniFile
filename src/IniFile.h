@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#include "SD.h"
-#include "LittleFS.h"
+#include <SD.h>
+#include <LittleFS.h>
 #include "IPAddress.h"
 
 #define INIFILE_VERSION "1.3.0"
