@@ -8,6 +8,7 @@
 extern SdFat SD;
 #else
 #include "SD.h"
+#include "SPIFFS.h"
 #endif
 #include "IPAddress.h"
 
