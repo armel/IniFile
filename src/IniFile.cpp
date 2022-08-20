@@ -5,7 +5,7 @@
 const uint8_t IniFile::maxFilenameLen = INI_FILE_MAX_FILENAME_LEN;
 
 IniFile::IniFile(const char* filename, mode_t mode,
-				 bool caseSensitive)
+				 bool caseSensitive, char* media)
 {
 	if (strlen(filename) <= maxFilenameLen)
 		strcpy(_filename, filename);
@@ -13,6 +13,7 @@ IniFile::IniFile(const char* filename, mode_t mode,
 		_filename[0] = '\0';
 	_mode = mode;
 	_caseSensitive = caseSensitive;
+	_media = media;
 }
 
 IniFile::~IniFile()

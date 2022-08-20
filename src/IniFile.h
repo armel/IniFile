@@ -45,7 +45,7 @@ public:
 
 	// Create an IniFile object. It isn't opened until open() is called on it.
 	IniFile(const char* filename, mode_t mode = FILE_READ,
-			bool caseSensitive = false);
+			bool caseSensitive = false, char* type = (char*)"SD");
 	~IniFile();
 
 	inline bool open(void); // Returns true if open succeeded
@@ -149,13 +149,18 @@ private:
 	mutable error_t _error;
 	mutable File _file;
 	bool _caseSensitive;
+	char* _type;
 };
 
 bool IniFile::open(void)
 {
 	if (_file)
 		_file.close();
-	_file = SD.open(_filename, _mode);
+	if (strcmp(_type, "SD") == 0)
+		_file = SD.open(_filename, _mode);
+	else if (strcmp(_type, "SP") == 0)
+		_file = SPIFFS.open(_filename, _mode);
+
 	if (isOpen()) {
 		_error = errorNoError;
 		return true;
