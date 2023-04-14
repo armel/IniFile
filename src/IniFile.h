@@ -8,8 +8,8 @@
 extern SdFat SD;
 #else
 #include "SD.h"
-#include "SPIFFS.h"
-#include "LittleFS.h"
+//#include "SPIFFS.h"
+//#include "LittleFS.h"
 #endif
 #include "IPAddress.h"
 
@@ -160,8 +160,8 @@ bool IniFile::open(void)
 		_file.close();
 	if (strcmp(_media, "SD") == 0)
 		_file = SD.open(_filename, _mode);
-	else if (strcmp(_media, "SPIFFS") == 0)
-		_file = SPIFFS.open(_filename, _mode);
+	//else if (strcmp(_media, "SPIFFS") == 0)
+	//	_file = SPIFFS.open(_filename, _mode);
 	else if (strcmp(_media, "LittleFS") == 0)
 		_file = LittleFS.open(_filename, _mode);
 	if (isOpen()) {
