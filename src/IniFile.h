@@ -9,7 +9,7 @@ extern SdFat SD;
 #else
 #include "SD.h"
 //#include "SPIFFS.h"
-//#include "LittleFS.h"
+#include <LittleFS.h>
 #endif
 #include "IPAddress.h"
 
