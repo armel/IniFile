@@ -4,8 +4,12 @@
 #include <stdint.h>
 
 #if defined(PREFER_SDFAT_LIBRARY)
-#include "SdFat.h"
-extern SdFat SD;
+# undef __has_include
+# include <FS.h>
+# include <FSImpl.h>
+# include <SdFat.h>
+# define __has_include
+extern SdFs SD; // SdFs au lieu de SdFat !!
 #else
 #include <SD.h>
 //#include "SPIFFS.h"
